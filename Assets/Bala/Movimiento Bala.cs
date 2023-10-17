@@ -17,4 +17,8 @@ public class MovimientoBala : MonoBehaviour
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(collision.gameObject);
+    }
 }

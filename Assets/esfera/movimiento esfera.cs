@@ -6,7 +6,6 @@ public class movimientoesfera : MonoBehaviour
 {
     // Start is called before the first frame update
 
-
     public float speed;
     void Start()
     {
@@ -17,5 +16,9 @@ public class movimientoesfera : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.right* speed * Time.deltaTime);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(collision.gameObject);
     }
 }
