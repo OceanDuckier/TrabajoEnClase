@@ -21,4 +21,5 @@ public class movimientoesfera : MonoBehaviour
     {
         Destroy(collision.gameObject);
     }
+
 }

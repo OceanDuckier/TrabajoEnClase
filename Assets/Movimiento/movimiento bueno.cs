@@ -6,8 +6,8 @@ public class movimientobueno : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject instanceObject;
-
     public float speed;
+
 
     void Start()
     {
@@ -30,6 +30,7 @@ public class movimientobueno : MonoBehaviour
         {
             transform.Translate(Vector3.up.normalized * speed * Time.deltaTime);
         }
+
 
     }
 }

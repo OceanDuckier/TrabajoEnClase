@@ -6,11 +6,10 @@ public class NewBehaviourScript1 : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public GameObject instanceObject;
-    bool spawnAleatorio = true;
-
-
-
+    public GameObject enemigo;
+    public float max;
+    public float minimo;
+    public float timer;
 
 
     void Start()
@@ -21,15 +20,16 @@ public class NewBehaviourScript1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer = timer - Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if ( timer <= 0)
         {
-            Instantiate(instanceObject, transform.position, Quaternion.identity);
+            float posY = Random.Range(minimo, max);
+            Instantiate(enemigo, new Vector3(transform.position.x, posY, 0), Quaternion.identity);
+            timer = 2;
         }
-        if (spawnAleatorio == true) 
-        {
-            Instantiate(instanceObject, transform.position, Quaternion.identity);
-        }
+
+
         
     }
     
