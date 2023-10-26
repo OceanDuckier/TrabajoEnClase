@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class NewBehaviourScript : MonoBehaviour
+public class ScriptEnemigos : MonoBehaviour
 {
     // Start is called before the first frame update
 
@@ -22,23 +23,32 @@ public class NewBehaviourScript : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        textObject.puntos = textObject.puntos + 1 ;
-        textObjectVidas.puntosVida = textObjectVidas.puntosVida - 1 ;
 
-        if (collision.gameObject.tag == "Jugador" || collision.gameObject.tag == "Pared")
+
+        if (collision.gameObject.tag == "Pared")
         {
-
+            
+        }
+        else if (collision.gameObject.tag == "Jugador")
+        {
+            textObjectVidas.puntosVida = textObjectVidas.puntosVida - 1;
             if (textObjectVidas.puntosVida == 0)
-            {
+           {
                 Destroy(collision.gameObject);
+                SceneManager.LoadScene(0);
             }
             Destroy(gameObject);
+
         }
         else
         {
+            textObject.puntos = textObject.puntos + 1;
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            if (textObject.puntos == 10)
+            {
+                SceneManager.LoadScene(0);
+            }
         }
-
     }
 }
